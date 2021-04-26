@@ -1,11 +1,10 @@
 FILENAME = './romeo_and_juliet.txt'.freeze
-FILTER_WORDS = ['and', 'the', 'i', 'is', 'of', 'to', 'a', 'me', 'my', 'he', 'his', 'she', 'her', 'not',
-                'for', 'this', 'that', 'in', 'you', 'with', 'it', 'what', 'when', 'o', 'as'].freeze
+FILTER_WORDS = %w(and the i is of to a me my he his she her not for this that in you with it what when o as).freeze
 
 def unique_words(filename)
     File.read(filename).downcase.gsub(/[^a-z]/, ' ').split
-rescue
-    puts "The file #{filename} does not exit."
+rescue => e
+    puts "The file #{filename} does not exit: #{e}"
     exit
 end
 
